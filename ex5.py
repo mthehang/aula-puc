@@ -1,11 +1,17 @@
-import sys
 
 sexo = input('Digite o sexo da pessoa (M/F): ')
 sexo = sexo.lower()
 
-if sexo != 'm' and sexo != 'f':
+def comeco(sexof):
+    sexof = input('Digite o sexo da pessoa (M/F): ')
+    sexof = sexof.lower()
+    return sexo
+
+while sexo != 'm' and sexo != 'f':
     print('ERRO! Digite apenas M ou F.')
-    sys.exit()
+    sexo = comeco(sexo)
+
+
 
 idade = int(input('Digite a idade da pessoa: '))
 trabalho = int(input('Digite quantos anos a pessoa trabalhou: '))
