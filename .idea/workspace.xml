@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5796e3c3-f37d-493c-ab89-b0d4fc284e05" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ex3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex4.py" beforeDir="false" afterPath="$PROJECT_DIR$/ex4.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2Ww04u7YIPsjw1SqUOOlJ69URjJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
