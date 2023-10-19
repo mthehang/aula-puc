@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5796e3c3-f37d-493c-ab89-b0d4fc284e05" name="Changes" comment="ex10">
+    <list default="true" id="5796e3c3-f37d-493c-ab89-b0d4fc284e05" name="Changes" comment="exz10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exz10.py" beforeDir="false" afterPath="$PROJECT_DIR$/exz10.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697723748574</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="exz10">
+      <option name="closed" value="true" />
+      <created>1697725023430</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1697725023430</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,6 +174,7 @@
     <MESSAGE value="operador not" />
     <MESSAGE value="Acentuação" />
     <MESSAGE value="ex10" />
-    <option name="LAST_COMMIT_MESSAGE" value="ex10" />
+    <MESSAGE value="exz10" />
+    <option name="LAST_COMMIT_MESSAGE" value="exz10" />
   </component>
 </project>

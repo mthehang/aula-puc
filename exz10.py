@@ -1,5 +1,4 @@
 lista = []
 while len(lista) < 10:
-    number = int(input('Digite um número: '))
-    lista.append(number)
+    lista.append(int(input('Digite um número: ')))
 print(lista)
