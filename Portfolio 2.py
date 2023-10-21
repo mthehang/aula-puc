@@ -26,7 +26,7 @@ def menu():
     while True:  # Loop para altura
         try:
             altura = float(input('Digite a altura (metros): ').replace(',', '.'))
-            if altura != 0:
+            if altura > 0:
                 break
             else:
                 print('A altura não pode ser 0. Tente novamente.')
