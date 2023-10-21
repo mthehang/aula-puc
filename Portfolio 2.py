@@ -13,17 +13,17 @@ def menu():
         else:
             print('Por favor, digite M para masculino ou F para feminino.')
 
-    while True:  # Loop para a massa
+    while True:  # Loop para massa
         try:
             massa = float(input('Digite a massa corporal (KG): ').replace(',', '.'))
-            if massa != 0:
+            if massa > 0:
                 break
             else:
                 print('A massa não pode ser 0. Tente novamente.')
         except ValueError:
-            print('Por favor, digite um valor válido para a massa.')
+            print('Por favor, digite um valor válido à massa.')
 
-    while True:  # Loop para a altura
+    while True:  # Loop altura
         try:
             altura = float(input('Digite a altura (metros): ').replace(',', '.'))
             if altura != 0:
@@ -31,7 +31,7 @@ def menu():
             else:
                 print('A altura não pode ser 0. Tente novamente.')
         except ValueError:
-            print('Por favor, digite um valor válido para a altura.')
+            print('Por favor, digite um valor válido à altura.')
 
     imc = massa / (altura ** 2)
 
