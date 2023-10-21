@@ -23,7 +23,7 @@ def menu():
         except ValueError:
             print('Por favor, digite um valor válido à massa.')
 
-    while True:  # Loop altura
+    while True:  # Loop para altura
         try:
             altura = float(input('Digite a altura (metros): ').replace(',', '.'))
             if altura != 0:
