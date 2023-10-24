@@ -1,6 +1,16 @@
 
-lista = [4, 5, 2]
-lista = lista.sort()
+lista = [4, 5, 2, 3]
 
-for itens in range(len(lista)):
-    print(lista[itens])
+for items in range(len(lista)):
+    while items < 2:
+        lista[items] = 7
+        items += 1
+    print(lista)
+
+lista.append(9)
+
+print(lista[-1])
+
+lista = [8, 8, 8, 8]
+
+print(lista)
