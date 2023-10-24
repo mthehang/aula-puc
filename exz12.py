@@ -1,16 +1,15 @@
 
-lista = [4, 5, 2, 3]
+def loop():
+    for items in lista:
+        print(items.capitalize())
 
-for items in range(len(lista)):
-    while items < 2:
-        lista[items] = 7
-        items += 1
-    print(lista)
+lista = ['matheus','leticia', 'valeria']
+loop()
+print()
+lista[1:2] = ['safira']
+loop()
+lista
+print(f'\nQuantidade de itens na lista: {len(lista)}')
 
-lista.append(9)
-
-print(lista[-1])
-
-lista = [8, 8, 8, 8]
-
-print(lista)
+lista.remove('safira')
+loop()
