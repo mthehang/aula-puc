@@ -39,22 +39,22 @@ def menu():
         case 'm':
             if imc < 20:
                 print(f'IMC de {nome} está abaixo do normal.')
-            elif 20 <= imc < 25:
+            elif imc < 25:
                 print(f'IMC de {nome} está normal.')
-            elif 25 <= imc < 30:
+            elif imc < 30:
                 print(f'IMC de {nome} está em obesidade Leve.')
-            elif 30 <= imc < 40:
+            elif imc < 40:
                 print(f'IMC de {nome} está em obesidade Moderada.')
             else:
                 print(f'IMC de {nome} está em obesidade Mórbida.')
         case 'f':
             if imc < 19:
                 print(f'IMC de {nome} está abaixo do normal.')
-            elif 19 <= imc < 24:
+            elif imc < 24:
                 print(f'IMC de {nome} está normal.')
-            elif 24 <= imc < 29:
+            elif imc < 29:
                 print(f'IMC de {nome} está em obesidade Leve.')
-            elif 29 <= imc < 39:
+            elif imc < 39:
                 print(f'IMC de {nome} está em obesidade Moderada.')
             else:
                 print(f'IMC de {nome} está em obesidade Mórbida.')
