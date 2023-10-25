@@ -1,5 +1,6 @@
 import tkinter as tk
 
+
 class SimpleApp:
     def __init__(self, root):
         self.root = root
@@ -77,6 +78,7 @@ class SimpleApp:
         # Concatenando todos os números da lista para exibir
         numbers_text = " ".join(self.number_list)
         self.numbers.config(text=f"Números: {numbers_text}")
+
 
 if __name__ == "__main__":
     root = tk.Tk()
