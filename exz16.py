@@ -21,11 +21,11 @@ lista_pares = []
 lista_indice_pares = []
 
 for items in lista:
-    if items % 2 == 0 and items != 0: # índice pares
+    if items % 2 == 0: # índice pares
         lista_pares.append(items)
         
 for indice in range(len(lista)):
-    if indice % 2 == 0 and indice != 0:
+    if indice % 2 == 0:
         lista_indice_pares.append(lista[indice])
         
         
