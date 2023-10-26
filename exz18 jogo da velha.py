@@ -18,9 +18,25 @@ def verificar_vencedor(tabela):
     return None  # Se ninguém ganhou
 
 
-tabela = ['X', 'X', 'X',
-          'O', 'O', 'X',
-          'X', 'O', 'O']
+tabela = []
+jogador1 = input('Digite a marcação do jogador 1: ')
+jogador2 = input('Digite a marcação do jogador 2: ')
+x = jogador1
+
+while len(tabela) < 9:
+    while True:
+        try:
+            jogada = int(input(f'Digite a posição da sua jogada {x} (0 a 8): '))
+            if x == jogador1:
+                x = jogador2
+            else:
+                x = jogador1
+            break
+        except ValueError:
+            print('Jogada inválida.')
+
+    tabela.insert(jogada, x)
+
 
 vencedor = verificar_vencedor(tabela)
 if vencedor:
