@@ -24,5 +24,6 @@ def sequencia_dna():
         print('Programa finalizado.')
 
 
+print('Sequenciador de DNA')
 print('Nucleotídeos A, C, G e T correspondem respectivamente a 1, 2, 3 e 4.')
 sequencia_dna()
