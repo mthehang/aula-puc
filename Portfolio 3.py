@@ -11,7 +11,7 @@ def sequencia_dna():
 
     while len(lista) < vezes:
         nucleotideo = input(f'Digite o {len(lista) + 1}° nucleotídeo de {vezes}: ')
-        while nucleotideo not in ['1', '2', '3', '4', '5']:
+        while nucleotideo not in ['1', '2', '3', '4']:
             print('Entrada inválida.')
             print('Nucleotídeos A, C, G e T correspondem respectivamente a 1, 2, 3 e 4.')
             nucleotideo = input(f'Digite o {len(lista) + 1}° nucleotídeo de {vezes}: ')

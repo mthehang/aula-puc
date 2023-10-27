@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2aaa8ce-b800-4e45-ae3e-63967ac139a8" name="Changes" comment="att">
-      <change afterPath="$PROJECT_DIR$/Portfolio 3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exz12.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exz13.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exz14.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exz15.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exz16.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exz17.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exz18 jogo da velha.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/things.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Portfolio 2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Portfolio 2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exz 11.py" beforeDir="false" afterPath="$PROJECT_DIR$/exz 11.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Portfolio 3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Portfolio 3.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +37,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging master",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
