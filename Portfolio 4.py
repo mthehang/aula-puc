@@ -1,4 +1,3 @@
-
 lista_arquivos1 = ["IM0001.PDF", "IM0002.DCM", "IM0003.DCM", "IM0004.PDF", "IM0005.PDF"]
 lista_arquivos2 = ["IM0001.PDF", "IM0002.DCM", "IM0004.PDF"]
 
