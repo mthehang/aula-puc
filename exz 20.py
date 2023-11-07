@@ -7,6 +7,6 @@ print('Tente entender 1')
 print(alunos.upper().split('LE'))
 print('Tente entender 2')
 print(alunos.upper().split('A'))
-print('TENTE ENTENDER 3')
+print('Tente entender 3')
 for i in range(len(lista)):
     print(lista[i].split()[::-1])
