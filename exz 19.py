@@ -1,0 +1,13 @@
+s = 'A A B B C C D D E E F F G G H H I I J J'
+print(s[2])
+print('Posição da 1ª Ocorrência de A:', s.find('A'))
+print('Posição da 1ª Ocorrênia de A B:', s.find('A B'))
+print('Posição da 1ª Ocorrênia de A A:', s.find('A A'))
+print('Posição da 1ª Ocorrênia de F:', s.find('F'))
+print('Posição da 1ª Ocorrênia de X:', s.find('X'))
+print('IMPRIME A STRING INVERTIDA:')
+print(s[::-1])
+print('Transforma a string em uma lista separando por espaço:')
+lista = ', '.join(s.split())
+print(lista)
+print('Tamanho da lista: ', len(lista))
