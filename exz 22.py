@@ -11,19 +11,46 @@ def read():
         return [line.strip().split(';') for line in f]
 
 
+def remover_contato():
+    contatos = read()
+    try:
+        indice = int(input('Digite o índice do contato que deseja remover: '))
+        if 1 <= indice <= len(contatos):
+            print(f'Removendo contato: Nome: {contatos[indice - 1][0]} - Telefone: {contatos[indice - 1][1]}')
+            resp = input('Você tem certeza? (S/N)\n').lower()
+            while resp not in ['s', 'n']:
+                print('Opção inválida.')
+            if resp == 's':
+                del contatos[indice - 1]
+                with open("C:/Users/mathe/Documents/Programacao PUC/things.txt", "w") as f:
+                    for contato in contatos:
+                        f.write(';'.join(contato) + '\n')
+                print("Contato removido com sucesso!")
+            else:
+                print('Operação cancelada.')
+        else:
+            print("Índice fora do intervalo da lista de contatos.")
+    except ValueError:
+        print("Por favor, digite um número inteiro.")
 def alterar_contato():
     contatos = read()
     try:
         indice = int(input('Digite o índice do contato que deseja alterar: '))
         if 1 <= indice <= len(contatos):
             print(f'Alterando contato: Nome: {contatos[indice - 1][0]} - Telefone: {contatos[indice - 1][1]}')
-            novo_nome = input('Digite o novo nome: ').capitalize()
-            novo_numero = input('Digite o novo número de telefone: ')
-            contatos[indice - 1] = [novo_nome, novo_numero]
-            with open("C:/Users/mathe/Documents/Programacao PUC/things.txt", "w") as f:
-                for contato in contatos:
-                    f.write(';'.join(contato) + '\n')
-            print("Contato alterado com sucesso!")
+            resp = input('Você tem certeza? (S/N)\n').lower()
+            while resp not in ['s', 'n']:
+                print('Opção inválida.')
+            if resp == 's':
+                novo_nome = input('Digite o novo nome: ').capitalize()
+                novo_numero = input('Digite o novo número de telefone: ')
+                contatos[indice - 1] = [novo_nome, novo_numero]
+                with open("C:/Users/mathe/Documents/Programacao PUC/things.txt", "w") as f:
+                    for contato in contatos:
+                        f.write(';'.join(contato) + '\n')
+                print("Contato alterado com sucesso!")
+            else:
+                print('Operação cancelada.')
         else:
             print("Índice fora do intervalo da lista de contatos.")
     except ValueError:
@@ -49,22 +76,8 @@ def menu():
     print('b - Inserir contato')
     print('c - Ver contato específico')
     print('d - Alterar contato')
+    print('e - Remover contato')
     print('z - Sair do programa')
-
-
-def continuar_sair():
-    print()
-    print('x - Voltar ao menu')
-    print('z - Sair do programa')
-    while True:
-        op = input('Digite o que deseja: ').lower()
-        match op:
-            case 'x':
-                break
-            case 'z':
-                exit()
-            case _:
-                print('Opção inválida.')
 
 
 def main():
@@ -76,28 +89,38 @@ def main():
             case 'a':
                 os.system('cls')
                 contatos = read()
-                for index, lista in enumerate(contatos, start=1):
-                    print(f'{index} - Nome: {lista[0]} - Telefone: {lista[1]}')
-                    print()
-                continuar_sair()
+                if len(contatos) > 0:
+                    for index, lista in enumerate(contatos, start=1):
+                        print(f'{index} - Nome: {lista[0]} - Telefone: {lista[1]}')
+                        print()
+                else:
+                    print('A agenda está vazia.')
+                input()
             case 'b':
                 os.system('cls')
+                print('Cadastrar contato')
                 nome = input('Digite o nome: ').capitalize()
                 numero = input('Digite o número de telefone: ')
                 contatos = read()
-                if [nome, numero] not in contatos:
+                numero_existe = any(contato[1] == numero for contato in contatos)
+                if not numero_existe:
                     write(nome + ';' + numero)
+                    print('Contato cadastrado com sucesso!')
                 else:
-                    print("Contato já existe.")
-                continuar_sair()
+                    print("Número de telefone já cadastrado.")
+                input()
             case 'c':
                 os.system('cls')
                 procurar()
-                continuar_sair()
+                input()
             case 'd':
                 os.system('cls')
                 alterar_contato()
-                continuar_sair()
+                input()
+            case 'e':
+                os.system('cls')
+                remover_contato()
+                input()
             case 'z':
                 exit()
             case _:
