@@ -18,7 +18,7 @@ def verificar_vencedor(tabela):
     return None  # Se ninguém ganhou
 
 
-tabela = ['X', 'X', 'X',
+tabela = ['X', 'X', 'O',
           'O', 'O', 'X',
           'X', 'O', 'O']
 
