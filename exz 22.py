@@ -45,7 +45,6 @@ def procurar():
 
 
 def menu():
-    os.system('cls')
     print('a - Listar agenda')
     print('b - Inserir contato')
     print('c - Ver contato específico')
@@ -70,6 +69,7 @@ def continuar_sair():
 
 def main():
     while True:
+        os.system('cls')
         menu()
         opcao = input('Digite o que deseja: ').lower()
         match opcao:
@@ -78,6 +78,7 @@ def main():
                 contatos = read()
                 for index, lista in enumerate(contatos, start=1):
                     print(f'{index} - Nome: {lista[0]} - Telefone: {lista[1]}')
+                    print()
                 continuar_sair()
             case 'b':
                 os.system('cls')
@@ -101,6 +102,7 @@ def main():
                 exit()
             case _:
                 print('Opção inválida.')
+                input()
 
 
 main()
