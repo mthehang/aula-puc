@@ -1,3 +1,6 @@
+import os
+
+
 def write(something):
     with open("C:/Users/mathe/Documents/Programacao PUC/things.txt", "a") as f:
         f.write(f'{something}\n')
@@ -42,6 +45,7 @@ def procurar():
 
 
 def menu():
+    os.system('cls')
     print('a - Listar agenda')
     print('b - Inserir contato')
     print('c - Ver contato específico')
@@ -50,6 +54,7 @@ def menu():
 
 
 def continuar_sair():
+    print()
     print('x - Voltar ao menu')
     print('z - Sair do programa')
     while True:
@@ -69,11 +74,13 @@ def main():
         opcao = input('Digite o que deseja: ').lower()
         match opcao:
             case 'a':
+                os.system('cls')
                 contatos = read()
                 for index, lista in enumerate(contatos, start=1):
                     print(f'{index} - Nome: {lista[0]} - Telefone: {lista[1]}')
                 continuar_sair()
             case 'b':
+                os.system('cls')
                 nome = input('Digite o nome: ').capitalize()
                 numero = input('Digite o número de telefone: ')
                 contatos = read()
@@ -83,9 +90,11 @@ def main():
                     print("Contato já existe.")
                 continuar_sair()
             case 'c':
+                os.system('cls')
                 procurar()
                 continuar_sair()
             case 'd':
+                os.system('cls')
                 alterar_contato()
                 continuar_sair()
             case 'z':
