@@ -1,6 +1,6 @@
 def sequencia_dna():
     lista = []
-    mapeamento = {'1': 'A', '2': 'C', '3': 'G', '4': 'T'}
+    mapeamento = str.maketrans({'1': 'A', '2': 'C', '3': 'G', '4': 'T'})
 
     while True:
         try:
@@ -18,8 +18,8 @@ def sequencia_dna():
         lista.append(nucleotideo)
 
     if vezes != 0:
-        sequencia = ''.join([mapeamento[i] for i in lista])
-        print(f'Sequência de DNA: {sequencia}')
+        sequencia = ''.join(lista)
+        print(f'Sequência de DNA: {sequencia.translate(mapeamento)}')
     else:
         print('Programa finalizado.')
 

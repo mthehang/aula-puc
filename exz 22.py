@@ -11,15 +11,16 @@ def read():
         return [line.strip().split(';') for line in f]
 
 
-def procurar_nome():
+def procurar_contato():
     contatos = read()
-    pesquisa = input('Digite o nome do contato para procurá-lo: ').capitalize()
-    contatos_encontrados = [contato for contato in contatos if contato[0].startswith(pesquisa)]
+    pesquisa = input('Digite o início do nome ou parte do telefone do contato para procurá-lo: ')
+    contatos_encontrados = [contato for contato in contatos if pesquisa in contato[0] or pesquisa in contato[1]]
     if contatos_encontrados:
         for contato in contatos_encontrados:
             print(f'Nome: {contato[0]} - Telefone: {contato[1]}')
     else:
         print('Nenhum contato encontrado.')
+
 
 def resetar():
     resp = input('Você tem certeza disso? É irreversível! (S/N)').lower()
@@ -30,6 +31,7 @@ def resetar():
             f.write("")
     else:
         print('Operação cancelada.')
+
 
 def remover_contato():
     contatos = read()
@@ -52,6 +54,8 @@ def remover_contato():
             print("Índice fora do intervalo da lista de contatos.")
     except ValueError:
         print("Por favor, digite um número inteiro.")
+
+
 def alterar_contato():
     contatos = read()
     try:
@@ -93,7 +97,7 @@ def procurar():
 
 def menu():
     print('a - Listar agenda')
-    print('b - Cdastrar contato')
+    print('b - Cadastrar contato')
     print('c - Procurar contato pelo índice')
     print('d - Procurar contato por nome ou telefone')
     print('e - Alterar contato')
@@ -137,7 +141,7 @@ def main():
                 input()
             case 'd':
                 os.system('cls')
-                procurar_nome()
+                procurar_contato()
                 input()
             case 'e':
                 os.system('cls')
