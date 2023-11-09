@@ -11,6 +11,26 @@ def read():
         return [line.strip().split(';') for line in f]
 
 
+def procurar_nome():
+    contatos = read()
+    pesquisa = input('Digite o nome do contato para procurá-lo: ').capitalize()
+    contatos_encontrados = [contato for contato in contatos if contato[0].startswith(pesquisa)]
+    if contatos_encontrados:
+        for contato in contatos_encontrados:
+            print(f'Nome: {contato[0]} - Telefone: {contato[1]}')
+    else:
+        print('Nenhum contato encontrado.')
+
+def resetar():
+    resp = input('Você tem certeza disso? É irreversível! (S/N)').lower()
+    while resp not in ['s', 'n']:
+        print('Resposta inválida.')
+    if resp == 's':
+        with open("C:/Users/mathe/Documents/Programacao PUC/things.txt", "w") as f:
+            f.write("")
+    else:
+        print('Operação cancelada.')
+
 def remover_contato():
     contatos = read()
     try:
@@ -73,10 +93,12 @@ def procurar():
 
 def menu():
     print('a - Listar agenda')
-    print('b - Inserir contato')
-    print('c - Ver contato específico')
-    print('d - Alterar contato')
-    print('e - Remover contato')
+    print('b - Cdastrar contato')
+    print('c - Procurar contato pelo índice')
+    print('d - Procurar contato por nome ou telefone')
+    print('e - Alterar contato')
+    print('f - Remover contato')
+    print('g - Resetar a agenda')
     print('z - Sair do programa')
 
 
@@ -115,11 +137,18 @@ def main():
                 input()
             case 'd':
                 os.system('cls')
-                alterar_contato()
+                procurar_nome()
                 input()
             case 'e':
                 os.system('cls')
+                alterar_contato()
+                input()
+            case 'f':
+                os.system('cls')
                 remover_contato()
+                input()
+            case 'g':
+                resetar()
                 input()
             case 'z':
                 exit()
