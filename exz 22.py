@@ -13,7 +13,7 @@ def read():
 
 def procurar_contato():
     contatos = read()
-    pesquisa = input('Digite o início do nome ou parte do telefone do contato para procurá-lo: ')
+    pesquisa = input('Digite o nome ou telefone do contato para procurá-lo: ').capitalize()
     contatos_encontrados = [contato for contato in contatos if pesquisa in contato[0] or pesquisa in contato[1]]
     if contatos_encontrados:
         for contato in contatos_encontrados:
@@ -27,13 +27,40 @@ def resetar():
     while resp not in ['s', 'n']:
         print('Resposta inválida.')
     if resp == 's':
-        with open("C:/Users/mathe/Documents/Programacao PUC/things.txt", "w") as f:
+        with open("things.txt", "w") as f:
             f.write("")
     else:
         print('Operação cancelada.')
 
 
 def remover_contato():
+    contatos = read()
+    pesquisa = input('Digite o nome ou telefone do contato para removê-lo: ').capitalize()
+    contatos_encontrados = [contato for contato in contatos if pesquisa in contato[0] or pesquisa in contato[1]]
+    if contatos_encontrados:
+        for i, contato in enumerate(contatos_encontrados):
+            print(f'{i+1} - Nome: {contato[0]} - Telefone: {contato[1]}')
+        indice = int(input('Digite o número do contato que deseja remover: ')) - 1
+        if 0 <= indice < len(contatos_encontrados):
+            resp = input('Você tem certeza? (S/N)\n').lower()
+            while resp not in ['s', 'n']:
+                print('Opção inválida.')
+                resp = input('Você tem certeza? (S/N)\n').lower()
+            if resp == 's':
+                contatos.remove(contatos_encontrados[indice])
+                with open("things.txt", "w") as f:
+                    for contato in contatos:
+                        f.write(';'.join(contato) + '\n')
+                print("Contato removido com sucesso!")
+            else:
+                print('Operação cancelada.')
+        else:
+            print('Índice fora do intervalo.')
+    else:
+        print('Nenhum contato encontrado.')
+
+
+def remover_indice():
     contatos = read()
     try:
         indice = int(input('Digite o índice do contato que deseja remover: '))
@@ -100,9 +127,10 @@ def menu():
     print('b - Cadastrar contato')
     print('c - Procurar contato pelo índice')
     print('d - Procurar contato por nome ou telefone')
-    print('e - Alterar contato')
-    print('f - Remover contato')
-    print('g - Resetar a agenda')
+    print('e - Alterar contato pelo índice')
+    print('f - Remover contato pelo índice')
+    print('g - Remover contato pelo nome ou telefone')
+    print('h - Resetar a agenda')
     print('z - Sair do programa')
 
 
@@ -149,9 +177,13 @@ def main():
                 input()
             case 'f':
                 os.system('cls')
-                remover_contato()
+                remover_indice()
                 input()
             case 'g':
+                os.system('cls')
+                remover_contato()
+                input()
+            case 'h':
                 resetar()
                 input()
             case 'z':
