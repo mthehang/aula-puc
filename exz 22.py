@@ -1,6 +1,12 @@
 import os
 
 
+def verificar_arquivo():
+    arquivo = "things.txt"
+    if not os.path.isfile(arquivo):
+        open(arquivo, 'w').close()
+
+
 def write(something):
     with open("things.txt", "a") as f:
         f.write(f'{something}\n')
@@ -152,6 +158,7 @@ def main():
         opcao = input('Digite o que deseja: ').lower()
         match opcao:
             case 'a':
+                verificar_arquivo()
                 os.system('cls')
                 contatos = read()
                 if len(contatos) > 0:
@@ -162,6 +169,7 @@ def main():
                     print('A agenda está vazia.')
                 input()
             case 'b':
+                verificar_arquivo()
                 os.system('cls')
                 print('Cadastrar contato')
                 nome = input('Digite o nome: ').capitalize()
@@ -175,26 +183,32 @@ def main():
                     print("Número de telefone já cadastrado.")
                 input()
             case 'c':
+                verificar_arquivo()
                 os.system('cls')
                 procurar()
                 input()
             case 'd':
+                verificar_arquivo()
                 os.system('cls')
                 procurar_contato()
                 input()
             case 'e':
+                verificar_arquivo()
                 os.system('cls')
                 alterar_contato()
                 input()
             case 'f':
+                verificar_arquivo()
                 os.system('cls')
                 remover_indice()
                 input()
             case 'g':
+                verificar_arquivo()
                 os.system('cls')
                 remover_contato()
                 input()
             case 'h':
+                verificar_arquivo()
                 resetar()
                 input()
             case 'z':
@@ -202,6 +216,5 @@ def main():
             case _:
                 print('Opção inválida.')
                 input()
-
 
 main()
