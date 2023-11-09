@@ -18,8 +18,7 @@ def sequencia_dna():
         lista.append(nucleotideo)
 
     if vezes != 0:
-        sequencia = ''.join(lista)
-        print(f'Sequência de DNA: {sequencia.translate(mapeamento)}')
+        print(f"Sequência de DNA: {''.join(lista).translate(mapeamento)}")
     else:
         print('Programa finalizado.')
 
