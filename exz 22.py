@@ -23,9 +23,12 @@ def procurar_contato():
 
 
 def resetar():
-    resp = input('Você tem certeza disso? É irreversível! (S/N)').lower()
-    while resp not in ['s', 'n']:
-        print('Resposta inválida.')
+    while True:
+        resp = input('Você tem certeza? (S/N)\n').lower()
+        if resp not in ['s', 'n']:
+            print('Opção inválida.')
+        else:
+            break
     if resp == 's':
         with open("things.txt", "w") as f:
             f.write("")
@@ -42,10 +45,12 @@ def remover_contato():
             print(f'{i+1} - Nome: {contato[0]} - Telefone: {contato[1]}')
         indice = int(input('Digite o número do contato que deseja remover: ')) - 1
         if 0 <= indice < len(contatos_encontrados):
-            resp = input('Você tem certeza? (S/N)\n').lower()
-            while resp not in ['s', 'n']:
-                print('Opção inválida.')
+            while True:
                 resp = input('Você tem certeza? (S/N)\n').lower()
+                if resp not in ['s', 'n']:
+                    print('Opção inválida.')
+                else:
+                    break
             if resp == 's':
                 contatos.remove(contatos_encontrados[indice])
                 with open("things.txt", "w") as f:
@@ -66,9 +71,12 @@ def remover_indice():
         indice = int(input('Digite o índice do contato que deseja remover: '))
         if 1 <= indice <= len(contatos):
             print(f'Removendo contato: Nome: {contatos[indice - 1][0]} - Telefone: {contatos[indice - 1][1]}')
-            resp = input('Você tem certeza? (S/N)\n').lower()
-            while resp not in ['s', 'n']:
-                print('Opção inválida.')
+            while True:
+                resp = input('Você tem certeza? (S/N)\n').lower()
+                if resp not in ['s', 'n']:
+                    print('Opção inválida.')
+                else:
+                    break
             if resp == 's':
                 del contatos[indice - 1]
                 with open("things.txt", "w") as f:
@@ -89,9 +97,12 @@ def alterar_contato():
         indice = int(input('Digite o índice do contato que deseja alterar: '))
         if 1 <= indice <= len(contatos):
             print(f'Alterando contato: Nome: {contatos[indice - 1][0]} - Telefone: {contatos[indice - 1][1]}')
-            resp = input('Você tem certeza? (S/N)\n').lower()
-            while resp not in ['s', 'n']:
-                print('Opção inválida.')
+            while True:
+                resp = input('Você tem certeza? (S/N)\n').lower()
+                if resp not in ['s', 'n']:
+                    print('Opção inválida.')
+                else:
+                    break
             if resp == 's':
                 novo_nome = input('Digite o novo nome: ').capitalize()
                 novo_numero = input('Digite o novo número de telefone: ')
