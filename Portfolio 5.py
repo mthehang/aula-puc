@@ -59,9 +59,14 @@ def cortar_cadeia():
                 elif resp == '2':
                     dna[0] = dna[0][:index_atual] + dna[0][index_atual + len(corte):]
                     dna[1] = dna[1][:index_atual] + dna[1][index_atual + len(corte):]
-                    print(f'Fita 1 atualizada: {dna[0]}')
-                    print(f'Fita 2 atualizada: {dna[1]}')
-                    break
+                    if dna[0]:
+                        print(f'Fita 1 atualizada: {dna[0]}')
+                        print(f'Fita 2 atualizada: {dna[1]}')
+                        break
+                    else:
+                        resetar_dna()
+                        print('DNA resetado,')
+                        break
                 else:
                     print('Resposta inválida.')
             break
