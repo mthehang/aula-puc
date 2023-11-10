@@ -249,86 +249,81 @@ def main():
     while True:
         os.system('cls')
         menu()
-        try:
-            opcao = int(input('Digite o que deseja: '))
-            match opcao:
-                case 1:
-                    os.system('cls')
+        opcao = input('Digite o que deseja: ')
+        match opcao:
+            case '1':
+                os.system('cls')
+                resetar_dna()
+                inserir_fitas()
+                input('\nPressione enter para continuar.')
+            case '2':
+                os.system('cls')
+                if dna:
+                    contar_bases()
+                else:
+                    print('\nDNA vazio.')
+                input('\nPressione enter para continuar.')
+            case '3':
+                os.system('cls')
+                if dna:
+                    inserir_bases()
+                else:
+                    print('DNA vazio.')
+                input('\nPressione enter para continuar.')
+            case '4':
+                os.system('cls')
+                if dna:
+                    parear()
+                else:
+                    print('DNA vazio.')
+                input('\nPressione enter para continuar.')
+            case '5':
+                os.system('cls')
+                if dna:
+                    localizar_subcadeia()
+                else:
+                    print('DNA vazio.')
+                input('\nPressione enter para continuar.')
+            case '6':
+                os.system('cls')
+                if dna:
+                    inverter()
+                else:
+                    print('DNA vazio.')
+                input('\nPressione enter para continuar.')
+            case '7':
+                os.system('cls')
+                if dna:
+                    verificar_pareamento()
+                else:
+                    print('DNA vazio')
+                input('\nPressione enter para continuar.')
+            case '8':
+                os.system('cls')
+                if len(dna) > 1:
+                    if len(dna[0]) == len(dna[1]):
+                        cortar_cadeia()
+                    else:
+                        print('Fitas com tamanhos diferentes, verifique pareamento.')
+                else:
+                    print('DNA incompleto.')
+                input('\nPressione enter para continuar.')
+            case '9':
+                os.system('cls')
+                if dna:
                     resetar_dna()
-                    inserir_fitas()
-                    input('\nPressione enter para continuar.')
-                case 2:
-                    os.system('cls')
-                    if dna:
-                        contar_bases()
-                    else:
-                        print('\nDNA vazio.')
-                    input('\nPressione enter para continuar.')
-                case 3:
-                    os.system('cls')
-                    if dna:
-                        inserir_bases()
-                    else:
-                        print('DNA vazio.')
-                    input('\nPressione enter para continuar.')
-                case 4:
-                    os.system('cls')
-                    if dna:
-                        parear()
-                    else:
-                        print('DNA vazio.')
-                    input('\nPressione enter para continuar.')
-                case 5:
-                    os.system('cls')
-                    if dna:
-                        localizar_subcadeia()
-                    else:
-                        print('DNA vazio.')
-                    input('\nPressione enter para continuar.')
-                case 6:
-                    os.system('cls')
-                    if dna:
-                        inverter()
-                    else:
-                        print('DNA vazio.')
-                    input('\nPressione enter para continuar.')
-                case 7:
-                    os.system('cls')
-                    if dna:
-                        verificar_pareamento()
-                    else:
-                        print('DNA vazio')
-                    input('\nPressione enter para continuar.')
-                case 8:
-                    os.system('cls')
-                    if len(dna) > 1:
-                        if len(dna[0]) == len(dna[1]):
-                            cortar_cadeia()
-                        else:
-                            print('Fitas com tamanhos diferentes, verifique pareamento.')
-                    else:
-                        print('DNA incompleto.')
-                    input('\nPressione enter para continuar.')
-                case 9:
-                    os.system('cls')
-                    if dna:
-                        resetar_dna()
-                        print('DNA resetado com sucesso.')
-                    else:
-                        print('DNA vazio')
-                    input('\nPressione enter para continuar.')
-                case 0:
-                    os.system('cls')
-                    print('\nFinalizando o programa.')
-                    exit()
-                case __:
-                    os.system('cls')
-                    print('\nOpção inválida.')
-                    input('\nPressione enter para continuar.')
-        except ValueError:
-            os.system('cls')
-            print('\nOpção inválida.')
-            input('\nPressione enter para continuar.')
+                    print('DNA resetado com sucesso.')
+                else:
+                    print('DNA vazio')
+                input('\nPressione enter para continuar.')
+            case '0':
+                os.system('cls')
+                print('\nFinalizando o programa.')
+                exit()
+            case __:
+                os.system('cls')
+                print('\nOpção inválida.')
+                input('\nPressione enter para continuar.')
 
 
 main()
