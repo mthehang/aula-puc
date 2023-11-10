@@ -17,26 +17,6 @@ def menu():
     print('0 - Sair do programa')
 
 
-def verificar_fita2():
-    if len(dna) > 1:
-        while True:
-            if len(dna[0]) == len(dna[1]):
-                print(f'Fita 1: {dna[0]} ')
-                print(f'Fita 2 detectada: {dna[1]} ')
-                resposta = input('Deseja usá-la? (S/N)\n').lower()
-                if resposta == 's':
-                    return
-                elif resposta == 'n':
-                    del dna[1]
-                    break
-                else:
-                    print('Resposta inválida.')
-            else:
-                print('A Fita 2 é menor que a Fita 1.')
-                print('É necessário parear fitas.')
-                return 1
-
-
 def resetar_dna():
     dna.clear()
 
@@ -174,37 +154,47 @@ def inserir_bases():
             print('\nBase nitrogenada inválida!\n')
 
 
-def verificar_pareamento():
+def criando_pareamento():
     while True:
-        if verificar_fita2() == 1:
-            return
+        fita2 = input('Digite a cadeia da Fita 2: ').upper()
+        if len(fita2) != len(dna[0]):
+            print('A cadeia inserida não tem o mesmo tamanho que a cadeia da Fita 1.')
+        elif all(char in ['A', 'C', 'G', 'T'] for char in fita2):
+            dna.append(fita2)
+            break
         else:
-            os.system('cls')
-            while True:
-                print(f'Fita 1: {dna[0]}')
-                dna.append(input('Digite a cadeia que deseja verificar pareamento: ').upper())
-                if len(dna[1]) != len(dna[0]):
-                    print('A cadeia inserida não tem o mesmo tamanho que a cadeia da Fita 1.')
-                    del dna[1]
-                else:
-                    if all(char in ['A', 'C', 'G', 'T'] for char in dna[1]):
-                        pareamentos_errados = []
-                        for i in range(len(dna[0])):
-                            if dna[1].translate(traducao)[i] != dna[0][i]:
-                                pareamentos_errados.append(f'{i + 1}')
-                        if not pareamentos_errados:
-                            os.system('cls')
-                            print(f'Fita 1: {dna[0]}')
-                            print(f'Fita 2: {dna[1]}')
-                            print('Cadeia perfeitamente pareada.')
-                            break
-                        else:
-                            print(f'Erro de pareamento na(s) posição(ões): {", ".join(pareamentos_errados)}')
-                            print('Fita 2 criada será deletada.')
-                            del dna[1]
-                            break
-                    else:
-                        print("Valor inválido. Por favor, insira apenas (A, C, G, T).")
+            print("Valor inválido. Por favor, insira apenas (A, C, G, T).")
+
+
+def verificar_pareamento():
+    print(f'Fita 1: {dna[0]}')
+    if len(dna) < 2:
+        criando_pareamento()
+
+    elif len(dna[0]) != len(dna[1]):
+        print(f'Fita 2: {dna[1]}')
+        print('As fitas de DNA têm tamanhos diferentes. É necessário parear.')
+        return
+
+    else:
+        while True:
+            print(f'Fita 2: {dna[1]}')
+            resposta = input('Deseja usar esta Fita 2? (S/N)\n').lower()
+            if resposta == 'n':
+                dna.pop()
+                criando_pareamento()
+                break
+            elif resposta == 's':
+                break
+            else:
+                print('Resposta inválida.')
+    pareamentos_errados = [str(i + 1) for i in range(len(dna[0])) if dna[1][i] != dna[0][i].translate(traducao)]
+    if not pareamentos_errados:
+        print('As fitas estão corretamente pareadas.')
+    else:
+        print(f'Erro de pareamento na(s) posição(ões): {", ".join(pareamentos_errados)}')
+        print('Fita com defeito está sendo deletada.')
+        dna.pop()
 
 
 def main():
