@@ -9,36 +9,21 @@ def menu():
     print('2 - Contar bases nitrogenadas da cadeia')
     print('3 - Inserir bases nitrogenadas na cadeia criada')
     print('4 - Parear cadeia criada')
-    print('5 - Localizar uma subcadeia de bases nitrogenadas')
+    print('5 - Contar uma subcadeia de bases nitrogenadas')
     print('6 - Inverter cadeia criada')
     print('7 - Verificar problemas de pareamento')
     print('8 - Cortar cadeia')
+    print('9 - Resetar DNA')
     print('0 - Sair do programa')
 
 
-def juntar_cadeia():
-    if len(dna) > 1:
-        while True:
-            print(f'Cadeia 1: {dna[0]}')
-            print(f'Cadeia 2: {dna[1]}')
-            resp = input('Deseja juntar cadeias? (S/N)\n').lower()
-            if resp == 'n':
-                print('Operação cancelada!')
-                break
-            elif resp == 's':
-                dna[0] += dna[1]
-                dna[1] = ""
-                print(f'Cadeia juntada: {dna[0]}')
-                break
-            else:
-                print('Resposta inválida.')
-    else:
-        print('Não há cadeias para juntar.')
-
+def resetar_dna():
+    dna.clear()
 
 def cortar_cadeia():
-    print(f'Cadeia: {dna[0]}')
-    corte = input('Digite o que deseja cortar da cadeia: ').upper()
+    print(f'Fita 1: {dna[0]}')
+    print(f'Fita 2: {dna[1]}')
+    corte = input('Digite o que deseja cortar da Fita 1: ').upper()
     
     achar = [i for i in range(len(dna[0])) if dna[0].startswith(corte, i)]
 
@@ -49,8 +34,10 @@ def cortar_cadeia():
     index = 0
     while True:
         index_atual = achar[index]
-        grifado = dna[0][:index_atual] + '-' + dna[0][index_atual:index_atual+len(corte)] + '-' + dna[0][index_atual+len(corte):]
-        print(grifado)
+        grifado1 = dna[0][:index_atual] + '-' + dna[0][index_atual:index_atual+len(corte)] + '-' + dna[0][index_atual+len(corte):]
+        grifado2 = dna[1][:index_atual] + '-' + dna[1][index_atual:index_atual+len(corte)] + '-' + dna[1][index_atual+len(corte):]
+        print(f'Fita 1: {grifado1}')
+        print(f'Fita 2: {grifado2}')
 
         resposta = input('Deseja cortar aqui (S/N)' + (' ou cortar próxima subcadeia igual (P)? ' if len(achar) > 1 else '? ')).upper()
         if resposta == 'S':
@@ -61,15 +48,19 @@ def cortar_cadeia():
                 if resp == '1':
                     while True:
                         novasub = input('Digite a nova subcadeia: ').upper()
-                        if all(char in ['A', 'C', 'G', 'T'] for char in novasub):
+                        if novasub and all(char in ['A', 'C', 'G', 'T'] for char in novasub):
                             dna[0] = dna[0][:index_atual] + novasub + dna[0][index_atual + len(corte):]
-                            print(f'Cadeia atualizada: {dna[0]}')
+                            dna[1] = dna[1][:index_atual] + novasub.translate(traducao) + dna[1][index_atual + len(corte):]
+                            print(f'Fita 1 atualizada: {dna[0]}')
+                            print(f'Fita 2 atualizada: {dna[1]}')
                             return
                         else:
                             print('Subcadeia inválida.')
                 elif resp == '2':
                     dna[0] = dna[0][:index_atual] + dna[0][index_atual + len(corte):]
-                    print(f'Cadeia atualizada: {dna[0]}')
+                    dna[1] = dna[1][:index_atual] + dna[1][index_atual + len(corte):]
+                    print(f'Fita 1 atualizada: {dna[0]}')
+                    print(f'Fita 2 atualizada: {dna[1]}')
                     break
                 else:
                     print('Resposta inválida.')
@@ -90,8 +81,9 @@ def inverter():
 
 def localizar_subcadeia():
     while True:
-        subcadeia = input('Digite a subcadeia que deseja localizar e contar: ').upper()
-        if all(char in ['A', 'C', 'G', 'T'] for char in subcadeia):  # all retorna true se todas condições forem
+        print(f'Cadeia: {dna[0]}')
+        subcadeia = input('Digite a subcadeia que deseja contar: ').upper()
+        if subcadeia and all(char in ['A', 'C', 'G', 'T'] for char in subcadeia):  # all retorna true se todas condições forem
             # atendidas, false se não
             quantidade = sum(1 for i in range(len(dna[0]) - len(subcadeia) + 1) if dna[0][i:i + len(subcadeia)] == subcadeia)
             # range(len(cadeia) - len(subcadeia) + 1) pode "deslizar" do índice 0 ao tamanho da cadeia - subcadeia,
@@ -106,14 +98,15 @@ def localizar_subcadeia():
 
 
 def parear():
+    dna.append(dna[0].translate(traducao))
     print(f'Fita 1 do DNA: {dna[0]}')
-    print(f'Fita pareada do DNA: {dna[0].translate(traducao)}')
+    print(f'Fita pareada do DNA: {dna[1]}')
 
 
 def inserir_fitas():
     while True:
         resposta = input('Digite sua cadeia (A, C, G, T) para a fita do DNA, sem espaços: ').upper()
-        if all(char in ['A', 'C', 'G', 'T'] for char in resposta):  # all retorna true se todas condições forem
+        if resposta and all(char in ['A', 'C', 'G', 'T'] for char in resposta):  # all retorna true se todas condições forem
             # atendidas, false se não
             dna.append(resposta)
             print(f'\nFita 1: {dna[0]}')
@@ -136,7 +129,7 @@ def contar_bases():
 def inserir_bases():
     while True:
         resposta = input(f'Insira sua bases nitrogenadas (A, C, G, T) na cadeia {dna[0]}: ').upper()
-        if all(char in ['A', 'C', 'G', 'T'] for char in resposta):
+        if resposta and all(char in ['A', 'C', 'G', 'T'] for char in resposta):
             dna[0] += resposta
             print(f'\nCadeia atualizada: {dna[0]}')
             break
@@ -146,11 +139,14 @@ def inserir_bases():
 
 def verificar_pareamento():
     while True:
-        print(f'Cadeia: {dna[0]}')
         while True:
-            dna.append(input('Digite a cadeia que deseja verificar pareamento: ').upper())
-            if len(dna[1]) != len(dna[0]):
-                print('A cadeia inserida não tem o mesmo tamanho que a cadeia de DNA.')
+            if len(dna) < 2:
+                print(f'Fita 1: {dna[0]}')
+                dna.append(input('Digite a cadeia que deseja verificar pareamento: ').upper())
+                if len(dna[1]) != len(dna[0]):
+                    print('A cadeia inserida não tem o mesmo tamanho que a cadeia de DNA.')
+                else:
+                    break
             else:
                 break
         if all(char in ['A', 'C', 'G', 'T'] for char in dna[1]):
@@ -159,8 +155,10 @@ def verificar_pareamento():
                 if dna[1].translate(traducao)[i] != dna[0][i]:
                     pareamentos_errados.append(f'{i+1}')
             if not pareamentos_errados:
+                os.system('cls')
+                print(f'Fita 1: {dna[0]}')
+                print(f'Fita 2: {dna[1]}')
                 print('Cadeia perfeitamente pareada.')
-                del dna[1]
                 break
             else:
                 print(f'Erro de pareamento na(s) posição(ões): {", ".join(pareamentos_errados)}')
@@ -187,35 +185,35 @@ def main():
                     if dna:
                         contar_bases()
                     else:
-                        print('\nDNA vazio')
+                        print('\nDNA vazio.')
                     input('\nPressione enter para continuar.')
                 case 3:
                     os.system('cls')
                     if dna:
                         inserir_bases()
                     else:
-                        print('DNA vazio')
+                        print('DNA vazio.')
                     input('\nPressione enter para continuar.')
                 case 4:
                     os.system('cls')
                     if dna:
                         parear()
                     else:
-                        print('DNA vazio')
+                        print('DNA vazio.')
                     input('\nPressione enter para continuar.')
                 case 5:
                     os.system('cls')
                     if dna:
                         localizar_subcadeia()
                     else:
-                        print('DNA vazio')
+                        print('DNA vazio.')
                     input('\nPressione enter para continuar.')
                 case 6:
                     os.system('cls')
                     if dna:
                         inverter()
                     else:
-                        print('DNA vazio')
+                        print('DNA vazio.')
                     input('\nPressione enter para continuar.')
                 case 7:
                     os.system('cls')
@@ -226,8 +224,16 @@ def main():
                     input('\nPressione enter para continuar.')
                 case 8:
                     os.system('cls')
-                    if dna:
+                    if len(dna) > 1:
                         cortar_cadeia()
+                    else:
+                        print('DNA incompleto.')
+                    input('\nPressione enter para continuar.')
+                case 9:
+                    os.system('cls')
+                    if dna:
+                        resetar_dna()
+                        print('DNA resetado com sucesso.')
                     else:
                         print('DNA vazio')
                     input('\nPressione enter para continuar.')
