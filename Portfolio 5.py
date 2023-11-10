@@ -1,7 +1,7 @@
 import os
 
 traducao = str.maketrans({'A': 'T', 'G': 'C', 'C': 'G', 'T': 'A'})  # meu dicionário para parear a cadeia
-dna: list = []  # declarando que DNA é uma string vazia
+dna: list = []  # declarando que DNA é uma lista vazia
 
 
 def menu():
@@ -71,7 +71,7 @@ def cortar_cadeia():
                     print('Resposta inválida.')
             break
         elif resposta.upper() == 'P':
-            index = (index + 1) % len(achar)
+            index = (index + 1) % len(achar)  # Iterar todos os index, pois quando index+1 % len acontecer, retornará 0, resetando
         elif resposta.upper() == 'N':
             print('Operação cancelada.')
             break
@@ -88,8 +88,9 @@ def localizar_subcadeia():
     while True:
         print(f'Cadeia: {dna[0]}')
         subcadeia = input('Digite a subcadeia que deseja contar: ').upper()
-        if subcadeia and all(char in ['A', 'C', 'G', 'T'] for char in subcadeia):  # all retorna true se todas condições forem
-            # atendidas, false se não
+        if subcadeia and all(char in ['A', 'C', 'G', 'T'] for char in subcadeia):  # subcadeia para nao ser nula e
+            # all retorna true se todas condições forem
+            # atendidas, retorna false se não
             quantidade = sum(1 for i in range(len(dna[0]) - len(subcadeia) + 1) if dna[0][i:i + len(subcadeia)] == subcadeia)
             # range(len(cadeia) - len(subcadeia) + 1) pode "deslizar" do índice 0 ao tamanho da cadeia - subcadeia,
             # para nao passar do tamanho da cadeia
@@ -111,8 +112,7 @@ def parear():
 def inserir_fitas():
     while True:
         resposta = input('Digite sua cadeia (A, C, G, T) para a fita do DNA, sem espaços: ').upper()
-        if resposta and all(char in ['A', 'C', 'G', 'T'] for char in resposta):  # all retorna true se todas condições forem
-            # atendidas, false se não
+        if resposta and all(char in ['A', 'C', 'G', 'T'] for char in resposta):
             dna.append(resposta)
             print(f'\nFita 1: {dna[0]}')
             break
