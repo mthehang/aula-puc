@@ -12,7 +12,7 @@ def menu():
     print('5 - Contar uma subcadeia de bases nitrogenadas')
     print('6 - Inverter cadeia criada')
     print('7 - Verificar problemas de pareamento')
-    print('8 - Cortar cadeia')
+    print('8 - Tesoura CRISPR-CAS9')
     print('9 - Resetar DNA')
     print('0 - Sair do programa')
 
@@ -146,6 +146,7 @@ def inserir_fitas():
 
 
 def localizar_bases(base):
+    # find() acha apenas o primeiro, achei mais fácil iterar com for e enumarate para pegar indices para achar todos
     posicoes = [str(i+1) for i, char in enumerate(dna[0]) if char == base]
     print(f'Posições encontradas: {", ".join(posicoes)}')
 
