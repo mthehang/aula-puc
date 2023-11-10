@@ -20,16 +20,21 @@ def menu():
 def verificar_fita2():
     if len(dna) > 1:
         while True:
-            print(f'Fita 1: {dna[0]} ')
-            print(f'Fita 2 detectada: {dna[1]} ')
-            resposta = input('Deseja usá-la? (S/N)\n').lower()
-            if resposta == 's':
-                return
-            elif resposta == 'n':
-                del dna[1]
-                break
+            if len(dna[0]) == len(dna[1]):
+                print(f'Fita 1: {dna[0]} ')
+                print(f'Fita 2 detectada: {dna[1]} ')
+                resposta = input('Deseja usá-la? (S/N)\n').lower()
+                if resposta == 's':
+                    return
+                elif resposta == 'n':
+                    del dna[1]
+                    break
+                else:
+                    print('Resposta inválida.')
             else:
-                print('Resposta inválida.')
+                print('A Fita 2 é menor que a Fita 1.')
+                print('É necessário parear fitas.')
+                return 1
 
 
 def resetar_dna():
@@ -128,7 +133,10 @@ def localizar_subcadeia():
 
 
 def parear():
-    dna.append(dna[0].translate(traducao))
+    if len(dna) < 2:
+        dna.append(dna[0].translate(traducao))
+    else:
+        dna[1] = dna[0].translate(traducao)
     print(f'Fita 1 do DNA: {dna[0]}')
     print(f'Fita pareada do DNA: {dna[1]}')
 
@@ -168,35 +176,35 @@ def inserir_bases():
 
 def verificar_pareamento():
     while True:
-        verificar_fita2()
-        os.system('cls')
-        while True:
-            if len(dna) < 2:
+        if verificar_fita2() == 1:
+            return
+        else:
+            os.system('cls')
+            while True:
                 print(f'Fita 1: {dna[0]}')
                 dna.append(input('Digite a cadeia que deseja verificar pareamento: ').upper())
                 if len(dna[1]) != len(dna[0]):
-                    print('A cadeia inserida não tem o mesmo tamanho que a cadeia de DNA.')
+                    print('A cadeia inserida não tem o mesmo tamanho que a cadeia da Fita 1.')
+                    del dna[1]
                 else:
-                    break
-            else:
-                break
-        if all(char in ['A', 'C', 'G', 'T'] for char in dna[1]):
-            pareamentos_errados = []
-            for i in range(len(dna[0])):
-                if dna[1].translate(traducao)[i] != dna[0][i]:
-                    pareamentos_errados.append(f'{i + 1}')
-            if not pareamentos_errados:
-                os.system('cls')
-                print(f'Fita 1: {dna[0]}')
-                print(f'Fita 2: {dna[1]}')
-                print('Cadeia perfeitamente pareada.')
-                break
-            else:
-                print(f'Erro de pareamento na(s) posição(ões): {", ".join(pareamentos_errados)}')
-                del dna[1]
-                break
-        else:
-            print("Valor inválido. Por favor, insira apenas (A, C, G, T).")
+                    if all(char in ['A', 'C', 'G', 'T'] for char in dna[1]):
+                        pareamentos_errados = []
+                        for i in range(len(dna[0])):
+                            if dna[1].translate(traducao)[i] != dna[0][i]:
+                                pareamentos_errados.append(f'{i + 1}')
+                        if not pareamentos_errados:
+                            os.system('cls')
+                            print(f'Fita 1: {dna[0]}')
+                            print(f'Fita 2: {dna[1]}')
+                            print('Cadeia perfeitamente pareada.')
+                            break
+                        else:
+                            print(f'Erro de pareamento na(s) posição(ões): {", ".join(pareamentos_errados)}')
+                            print('Fita 2 criada será deletada.')
+                            del dna[1]
+                            break
+                    else:
+                        print("Valor inválido. Por favor, insira apenas (A, C, G, T).")
 
 
 def main():
@@ -256,7 +264,10 @@ def main():
                 case 8:
                     os.system('cls')
                     if len(dna) > 1:
-                        cortar_cadeia()
+                        if len(dna[0]) == len(dna[1]):
+                            cortar_cadeia()
+                        else:
+                            print('Fitas com tamanhos diferentes, verifique pareamento.')
                     else:
                         print('DNA incompleto.')
                     input('\nPressione enter para continuar.')
