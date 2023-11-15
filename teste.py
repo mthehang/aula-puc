@@ -35,6 +35,5 @@ plt.xlabel('Idade (anos)')
 plt.ylabel('Taxa de crescimento (cm/ano)')
 plt.legend()
 
-# Mostra os gráficos
 plt.tight_layout()
 plt.show()
